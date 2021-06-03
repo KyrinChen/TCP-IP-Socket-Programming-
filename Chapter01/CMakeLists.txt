@@ -15,5 +15,6 @@ if (WIN32)
 elseif (UNIX)
     add_executable(fd_seri fd_seri.c)
 else()
+    message(FATAL_ERROR "not support platform ${CMAKE_SYSTEM_NAME}")
 endif()
 
