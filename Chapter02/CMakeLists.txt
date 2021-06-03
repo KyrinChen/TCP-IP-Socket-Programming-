@@ -2,24 +2,24 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 # project name and language
-project(chapter-01 LANGUAGES C)
+project(chapter-02 LANGUAGES C)
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /utf-8")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} /utf-8")
 endif()
 
-if (WIN32)
-    set(LIBS_SYSTEM ws2_32)
-    set(SRC_FILE_LIST
-        tcp_client_win.c
-        tcp_server_win.c
-        )
-elseif (UNIX)
+if(UNIX)
     set(LIBS_SYSTEM )
     set(SRC_FILE_LIST 
         tcp_client.c
         tcp_server.c
+        )
+elseif(WIN32)
+    set(LIBS_SYSTEM ws2_32)
+    set(SRC_FILE_LIST
+        tcp_client_win.c
+        tcp_server_win.c
         )
 else()
     message(FATAL_ERROR "not support platform ${CMAKE_SYSTEM_NAME}")
